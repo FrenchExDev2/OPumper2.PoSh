@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- PowerShell 7.6 runs on .NET 10; net8.0 matches the runtime dependencies built by build/Dependencies.csproj. -->
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>FrenchExDev.OPumper2.Engine</RootNamespace>
+    <!-- A loaded module locks resources/runtime: builds and mutation runs stay under .cache, and
+         build/Initialize-Dependencies.ps1 copies the assembly next to the other runtime dependencies. -->
+    <OutputPath>$(MSBuildThisFileDirectory)../../.cache/engine/bin/$(MSBuildProjectName)/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="FrenchExDev.OPumper2.Engine.Tests" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- The version build/Dependencies.csproj places in resources/runtime, where the module loads it from. -->
+    <PackageReference Include="Microsoft.ML.Tokenizers" Version="2.0.0" />
+    <!-- Microsoft.ML.Tokenizers 2.0.0 brings Microsoft.Bcl.Memory 9.0.4, affected by CVE-2026-26127 (GHSA-73j8-2gch-69rq,
+         fixed in 9.0.14). The engine compiles against it and ships none of it. -->
+    <PackageReference Include="Microsoft.Bcl.Memory" Version="9.0.14" />
+  </ItemGroup>
+</Project>

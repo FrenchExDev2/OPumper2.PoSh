@@ -1,0 +1,8 @@
+{
+  "stable": {
+    "ArchiveSHA256": "D74A1B7E1D1FBF150AE6F29E083953CE07FC833FE9D66218D54940A8638249C6",
+    "ImageId": "320994c3b997e2ec6433f717f153e108023c5bec8fefa8d76b83451d16d05ea8",
+    "Reference": "docker.io/library/alpine@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6",
+    "RuntimeVersion": "7.6.7"
+  }
+}

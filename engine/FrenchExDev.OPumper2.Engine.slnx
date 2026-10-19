@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="FrenchExDev.OPumper2.Engine/FrenchExDev.OPumper2.Engine.csproj" />
+  <Project Path="FrenchExDev.OPumper2.Engine.Tests/FrenchExDev.OPumper2.Engine.Tests.csproj" />
+</Solution>

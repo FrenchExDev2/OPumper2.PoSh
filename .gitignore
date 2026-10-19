@@ -1,0 +1,6 @@
+.cache/
+test/Artifacts/
+resources/runtime/
+BenchmarkDotNet.Artifacts/
+bin/
+obj/

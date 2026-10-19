@@ -1,0 +1,298 @@
+{
+  "workers": 0,
+  "coveredLinesOnly": false,
+  "equivalents": {
+    "FrenchExDev.OPumper2.PoSh/build/FrenchExDev.OPumper2.Build.psm1:Invoke-OP2BuildProcess:1800 -> 1801": "A default timeout of half an hour bounds builds that finish in minutes; one more second changes no outcome a test or a build can observe, short of waiting thirty minutes.",
+    "FrenchExDev.OPumper2.PoSh/build/FrenchExDev.OPumper2.Build.psm1:Invoke-OP2BuildProcess:1000 -> 1001": "Seconds become milliseconds for WaitForExit. A wait one thousandth longer per second still times out a hung process; the timeout test only asserts that the run stops and reports Timeout, which both waits do.",
+    "FrenchExDev.OPumper2.PoSh/build/FrenchExDev.OPumper2.Build.psm1:Invoke-OP2Dotnet:3600 -> 3601": "A default timeout of an hour bounds dotnet commands that finish in minutes; one more second changes no observable outcome.",
+    "FrenchExDev.OPumper2.PoSh/build/FrenchExDev.OPumper2.Build.psm1:Get-OP2LockedImage:1800 -> 1801": "The pull timeout only bounds a registry that hangs; one more second over half an hour changes no observable outcome.",
+    "FrenchExDev.OPumper2.PoSh/build/FrenchExDev.OPumper2.Build.psm1:Get-OP2LockedImage:60 -> 61": "The inspect timeout only bounds a runtime that hangs on a local query answered in milliseconds; one more second changes no observable outcome.",
+    "FrenchExDev.OPumper2.PoSh/build/FrenchExDev.OPumper2.Build.psm1:53:$true -> $false": "CreateNoWindow only decides whether a console window is created for the child; with redirected streams, output, exit code and timeout are the same, and the tests run without a visible desktop to observe the window.",
+    "FrenchExDev.OPumper2.PoSh/src/Native.ps1:Invoke-OP2Native:50 -> 51": "The interval only bounds how long one wait for records may last before the loop checks its deadline again; the engine assembly returns as soon as records arrive or the child exits. Fifty or fifty-one milliseconds preserve values, framing and lifecycle semantics; actual durations are measured rather than assumed.",
+    "FrenchExDev.OPumper2.PoSh/src/Serialization.ps1:ConvertTo-OP2Document:40 -> 41": "All serialized values first pass through recursive protection, including domain classes and the delivered Data, records and excerpt measured as parts. Containers and reflected properties stop at depth 30; remaining well-known scalars cannot form deeper graphs. Both JSON depths exceed every protected graph, so the document and its byte/token counts are identical.",
+    "FrenchExDev.OPumper2.PoSh/src/Projection.ps1:5:0 -> 1": "PowerShell binds positional arguments in the order of their Position values, not by the values themselves. With no other positional parameter between them, Position 0 and 1 bind the same argument to the same parameter. Text is the only positional parameter of ConvertTo-OPumper2Line.",
+    "FrenchExDev.OPumper2.PoSh/src/Bypass.ps1:17:0 -> 1": "PowerShell binds positional arguments in the order of their Position values, not by the values themselves, and Command is declared before ArgumentList. Command takes the first positional argument and ArgumentList the remaining ones whether their positions are 0/1, 1/1 or 0/2; the positional bypass test binds the same command and arguments under each.",
+    "FrenchExDev.OPumper2.PoSh/src/Bypass.ps1:17:1 -> 2": "PowerShell binds positional arguments in the order of their Position values, not by the values themselves, and Command is declared before ArgumentList. Command takes the first positional argument and ArgumentList the remaining ones whether their positions are 0/1, 1/1 or 0/2; the positional bypass test binds the same command and arguments under each.",
+    "FrenchExDev.OPumper2.PoSh/src/Measurement.ps1:117:0 -> 1": "SQL parameter suffixes are private identifiers. Starting at call1 rather than call0 changes both declarations and references consistently; the linked invocation IDs, rows, transaction and delivered text are identical.",
+    "FrenchExDev.OPumper2.PoSh/src/Recall.ps1:123:0 -> 1": "PowerShell binds positional arguments in the order of their Position values, not by the values themselves. With no other positional parameter between them, Position 0 and 1 bind the same argument to the same parameter. Id is the only positional parameter of Get-OPumper2Recall.",
+    "FrenchExDev.OPumper2.PoSh/src/Recall.ps1:163:0 -> 1": "PowerShell binds positional arguments in the order of their Position values, not by the values themselves. Id is the only positional parameter of Invoke-OPumper2Recall, so Position 0 and 1 bind the same argument.",
+    "FrenchExDev.OPumper2.PoSh/src/Recall.ps1:139:0 -> 1": "The recall list is a fresh successful Result; a successful delivery carries no excerpt whatever its excerpt window, so 0 and 1 deliver the same text."
+  },
+  "mutate": [
+    "FrenchExDev.OPumper2.PoSh/src/Callbacks.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/CommandLine.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Configuration.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Dependencies.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Framing.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Gain.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Measurement.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Native.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Obfuscation.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Process.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Pump-Me.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Registry.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Result.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Serialization.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Storage.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Task.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Tokenization.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Schema.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Gain.Query.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Gain.Aggregate.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Gain.Advice.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Gain.Render.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Maintenance.ps1",
+    "FrenchExDev.OPumper2.PoSh/FrenchExDev.OPumper2.PoSh.psm1",
+    "FrenchExDev.OPumper2.PoSh/src/Projection.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Route.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Recall.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Shadow.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Bypass.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Definition.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Contract.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Summary.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Catalogue.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Registration.ps1",
+    "FrenchExDev.OPumper2.PoSh/build/FrenchExDev.OPumper2.Build.psm1",
+    "FrenchExDev.OPumper2.PoSh/src/Configuration.Pumps.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Test.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Audit.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Yaml.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Protection.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Budget.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Delivery.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Context.ps1",
+    "FrenchExDev.OPumper2.PoSh/src/Options.ps1"
+  ],
+  "tests": {
+    "FrenchExDev.OPumper2.PoSh/src/CommandLine.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/CommandLine.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Native.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Configuration.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Configuration.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Gain.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/ConfigurationPumps.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Measurement.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Measurement.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Registry.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Gain.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Native.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Native.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/BoundaryExecution.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Lifecycle.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Obfuscation.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Obfuscation.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Serialization.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Composition.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Pump-Me.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Configuration.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Registry.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Native.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/BoundaryExecution.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Registry.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Registry.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Result.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Serialization.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Composition.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Result.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Task.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Serialization.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Serialization.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Task.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Composition.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Obfuscation.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Task.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Composition.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/BoundaryExecution.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Task.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/FrenchExDev.OPumper2.PoSh.psm1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Configuration.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Registry.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Framing.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Serialization.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Native.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Composition.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/BoundaryExecution.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Measurement.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Result.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Task.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Lifecycle.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Callbacks.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Obfuscation.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/CommandLine.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Gain.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterDefinition.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterContract.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterCatalogue.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Callbacks.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Callbacks.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Framing.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Native.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Recall.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Framing.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Framing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Process.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Native.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Framing.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/BoundaryExecution.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Tokenization.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Measurement.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Gain.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Gain.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Measurement.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Storage.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Measurement.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Gain.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Context.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Dependencies.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Measurement.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Lifecycle.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Schema.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Measurement.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Gain.Query.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Gain.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Gain.Aggregate.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Gain.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Gain.Advice.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Gain.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Maintenance.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Gain.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Gain.Render.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Gain.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Measurement.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Projection.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Projection.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Route.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Projection.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Recall.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Recall.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Recall.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Shadow.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Recall.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Bypass.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Recall.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Definition.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterDefinition.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterCatalogue.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterTest.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Contract.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterContract.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/FilterRoute.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Summary.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterContract.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterCatalogue.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Catalogue.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterCatalogue.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Registration.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterContract.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/FilterRoute.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/build/FrenchExDev.OPumper2.Build.psm1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Build.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Configuration.Pumps.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/ConfigurationPumps.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Filter.Test.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/FilterTest.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Audit.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Audit.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Yaml.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Serialization.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Task.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Composition.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Obfuscation.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Protection.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Serialization.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Task.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Composition.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Obfuscation.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Budget.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Serialization.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Task.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Composition.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Obfuscation.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Delivery.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Serialization.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Task.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Integration/Composition.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Obfuscation.Tests.ps1",
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Context.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Context.Tests.ps1 FrenchExDev.OPumper2.PoSh/test/Unit/Timing.Tests.ps1 FrenchExDev.OPumper2.PoSh/test/Unit/Measurement.Tests.ps1 FrenchExDev.OPumper2.PoSh/test/Unit/Task.Tests.ps1 FrenchExDev.OPumper2.PoSh/test/Integration/Composition.Tests.ps1"
+    ],
+    "FrenchExDev.OPumper2.PoSh/src/Options.ps1": [
+      "FrenchExDev.OPumper2.PoSh/test/Unit/Configuration.Tests.ps1 FrenchExDev.OPumper2.PoSh/test/Unit/Boundary.Tests.ps1 FrenchExDev.OPumper2.PoSh/test/Unit/Recall.Tests.ps1 FrenchExDev.OPumper2.PoSh/test/Unit/Task.Tests.ps1"
+    ]
+  },
+  "thresholds": {
+    "high": 100,
+    "break": 100,
+    "low": 100
+  },
+  "reportPath": "FrenchExDev.OPumper2.PoSh/test/Artifacts/mutation.json",
+  "sandboxSubtrees": [
+    "FrenchExDev.OPumper2.PoSh",
+    "FrenchExDev.OPumper2.Git.PoSh",
+    "FrenchExDev.OPumper2.Dotnet.PoSh",
+    "FrenchExDev.OPumper2.Utility.Agent.PoSh"
+  ]
+}

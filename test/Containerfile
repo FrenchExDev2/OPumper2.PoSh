@@ -1,0 +1,23 @@
+ARG BASE_IMAGE=docker.io/library/alpine:3.24
+FROM ${BASE_IMAGE}
+# Pass both from test/runtime-versions.psd1 (Stable.Version, Stable.LinuxMuslSHA256 in lower case); Invoke-LinuxTests.ps1 does.
+ARG PWSH_VERSION
+ARG PWSH_SHA256
+RUN test -n "$PWSH_VERSION" && test -n "$PWSH_SHA256" \
+    && apk add --no-cache ca-certificates curl dotnet10-sdk git icu-libs krb5-libs libgcc libintl libssl3 libstdc++ ncurses-terminfo-base tzdata zlib \
+    && curl -fsSL -o /tmp/powershell.tar.gz "https://github.com/PowerShell/PowerShell/releases/download/v${PWSH_VERSION}/powershell-${PWSH_VERSION}-linux-musl-x64.tar.gz" \
+    && echo "${PWSH_SHA256}  /tmp/powershell.tar.gz" | sha256sum -c - \
+    && mkdir -p /opt/microsoft/powershell/7 \
+    && tar -xzf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+    && chmod +x /opt/microsoft/powershell/7/pwsh \
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh \
+    && rm /tmp/powershell.tar.gz
+ENV PSModulePath=/opt/opumper2-tools:/opt/microsoft/powershell/7/Modules
+COPY tools/ /opt/opumper2-tools/
+COPY packages/ /work/
+ENV DOTNET_NOLOGO=1 DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_CLI_UI_LANGUAGE=en-US NUGET_PACKAGES=/opt/nuget
+# The engine assembly gate (xUnit, coverlet, Stryker.NET) runs without network: its packages and local tools are
+# restored while the image is built.
+RUN cd /work/FrenchExDev.OPumper2.PoSh/engine && dotnet restore FrenchExDev.OPumper2.Engine.slnx && dotnet tool restore
+WORKDIR /work/FrenchExDev.OPumper2.PoSh
+ENTRYPOINT ["pwsh", "-NoLogo", "-NoProfile", "-NonInteractive", "-File", "/work/FrenchExDev.OPumper2.PoSh/test/Container-Entry.ps1"]
